@@ -8,6 +8,10 @@ public class Invoice {
 			InvoiceLine.LINE + "\n" + String.format(FORMAT_STRING, 
 					InvoiceLine.center("SALESPERSON",19), InvoiceLine.center("SHIP METHOD",13), InvoiceLine.center("SHIP TERMS", 14), InvoiceLine.center("DELIVERY DATE",14),InvoiceLine.center("PAY TERMS",12),InvoiceLine.center("DUE DATE",10))
 			+ "\n" + InvoiceLine.LINE;
+	public static final double GST = 534.39;
+	public static final String LINE1 = "-----------";
+	public static final String LINE2 = "-----------------";
+	
 	
 	private int inv;
 	private Date date;
@@ -80,7 +84,38 @@ public class Invoice {
 		
 		s += InvoiceLine.LINE; 
 		
+		s += "\n" + String.format("                                                           TOTAL DISCOUNT | %8s | %13s |",InvoiceLine.customFormat("##.00%",InvoiceLine.TotalDiscount/100),InvoiceLine.customFormat("$#,###,###.00", calculateLineTotal() * (100 - InvoiceLine.TotalDiscount)/100));
+		
+		s += "\n";
+		
+		s += "                                                                          " + LINE1 + LINE2;
+		
+		s += "\n" + String.format("                                                                            SUBTOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", calculateSubTotal()));
+		
+		s += "\n";
+		
+		s += "                                                                                     " + LINE2;
+		
+		s += "\n" + String.format("                                                                                 GST | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST));
+		
+		s += "\n";
+		
+		s += "                                                                                     " + LINE2;
+		
+		s += "\n" + String.format("                                                                               TOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST + calculateSubTotal()));
+		
+		s += "\n";
+		
+		s += "                                                                                     " + LINE2;
+		
+		s += "\n";
+		
 		return s;
+	}
+	
+	private double calculateSubTotal() {
+		double dou = calculateLineTotal() * (100 - InvoiceLine.TotalDiscount)/100;
+		return dou;
 	}
 	
 	private String printInvoiceLine() {
@@ -94,7 +129,18 @@ public class Invoice {
 		}
 		
 		return s;
-
 	}
+	
+	private double calculateLineTotal() {
+		int count = 0;
+		double calLineTotal = 0;
+		
+		while (arrInvice[count] != null ) {
+			calLineTotal += arrInvice[count].getLineTotal();
+			count++;
+		}
+		return calLineTotal;
+	}
+	
 	
 }

@@ -19,7 +19,6 @@ public class Main {
 		
 		System.out.print(inv.toString());
 
-		
 	}
 
 	public static Date createDate(int year,int month,int day){

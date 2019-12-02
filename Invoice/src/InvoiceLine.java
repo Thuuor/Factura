@@ -10,6 +10,7 @@ public class InvoiceLine {
 			LINE + "\n" + String.format(FORMAT_STRING, 
 					center("QTY",9), center("ITEM #",10), center("DESCRIPTION", 30), center("UNIT PRICE",13),center("DISCOUNT",8),center("LINE TOTAL",13))
 			+ "\n" + LINE;
+	public static double TotalDiscount = 6;
 	
 	private int qty;
 	private String item;
@@ -18,6 +19,10 @@ public class InvoiceLine {
 	private float discountPercent;
 	private double lineTotal;
 	
+	public double getLineTotal() {
+		return lineTotal;
+	}
+
 	public InvoiceLine(int qty,String item,String description,double price,float discount) {
 		this.qty = qty;
 		this.item = item;
@@ -63,4 +68,5 @@ public class InvoiceLine {
         }
         return sb.toString();
     }
+
 }
