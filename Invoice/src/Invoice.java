@@ -86,7 +86,7 @@ public class Invoice {
 		
 		s += InvoiceLine.LINE; 
 		
-		s += "\n" + String.format("                                                           TOTAL DISCOUNT | %8s | %13s |",InvoiceLine.customFormat("##.00%",InvoiceLine.TotalDiscount/100),InvoiceLine.customFormat("$#,###,###.00", calculateLineTotal() * (100 - InvoiceLine.TotalDiscount)/100));
+		s += "\n" + String.format("                                                           TOTAL DISCOUNT | %8s | %13s |",InvoiceLine.customFormat("##.00%",InvoiceLine.TotalDiscount/100),InvoiceLine.customFormat("$#,###,###.00", calculateLineTotal() - calculateSubTotal()));
 		
 		s += "\n";
 		
@@ -102,9 +102,7 @@ public class Invoice {
 		
 		s += "\n" + String.format("                                                                               TOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST + calculateSubTotal()));
 		
-		s += "\n"+ SPACE2 + LINE2;
-		
-		s += "\n";
+		s += "\n" + SPACE2 + LINE2 + "\n";
 		
 		return s;
 	}
