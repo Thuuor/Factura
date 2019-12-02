@@ -11,6 +11,8 @@ public class Invoice {
 	public static final double GST = 534.39;
 	public static final String LINE1 = "-----------";
 	public static final String LINE2 = "-----------------";
+	public static final String SPACE1 = "                                                                          ";
+	public static final String SPACE2 = "                                                                                     ";
 	
 	
 	private int inv;
@@ -88,25 +90,25 @@ public class Invoice {
 		
 		s += "\n";
 		
-		s += "                                                                          " + LINE1 + LINE2;
+		s += SPACE1 + LINE1 + LINE2;
 		
 		s += "\n" + String.format("                                                                            SUBTOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", calculateSubTotal()));
 		
 		s += "\n";
 		
-		s += "                                                                                     " + LINE2;
+		s += SPACE2 + LINE2;
 		
 		s += "\n" + String.format("                                                                                 GST | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST));
 		
 		s += "\n";
 		
-		s += "                                                                                     " + LINE2;
+		s += SPACE2 + LINE2;
 		
 		s += "\n" + String.format("                                                                               TOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST + calculateSubTotal()));
 		
 		s += "\n";
 		
-		s += "                                                                                     " + LINE2;
+		s += SPACE2 + LINE2;
 		
 		s += "\n";
 		
