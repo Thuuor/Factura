@@ -94,21 +94,15 @@ public class Invoice {
 		
 		s += "\n" + String.format("                                                                            SUBTOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", calculateSubTotal()));
 		
-		s += "\n";
-		
-		s += SPACE2 + LINE2;
+		s += "\n" + SPACE2 + LINE2;
 		
 		s += "\n" + String.format("                                                                                 GST | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST));
 		
-		s += "\n";
-		
-		s += SPACE2 + LINE2;
+		s += "\n" + SPACE2 + LINE2;
 		
 		s += "\n" + String.format("                                                                               TOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST + calculateSubTotal()));
 		
-		s += "\n";
-		
-		s += SPACE2 + LINE2;
+		s += "\n"+ SPACE2 + LINE2;
 		
 		s += "\n";
 		
