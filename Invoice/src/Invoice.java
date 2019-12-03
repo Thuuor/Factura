@@ -86,21 +86,25 @@ public class Invoice {
 		
 		s += InvoiceLine.LINE; 
 		
-		s += "\n" + String.format("                                                           TOTAL DISCOUNT | %8s | %13s |",InvoiceLine.customFormat("##.00%",InvoiceLine.TotalDiscount/100),InvoiceLine.customFormat("$#,###,###.00", calculateLineTotal() - calculateSubTotal()));
+		s += "\n" + String.format("                                                           TOTAL DISCOUNT | %8s | %13s |",
+				InvoiceLine.customFormat("##.00%",InvoiceLine.TotalDiscount/100),InvoiceLine.customFormat("$#,###,###.00", calculateLineTotal() - calculateSubTotal()));
 		
 		s += "\n";
 		
 		s += SPACE1 + LINE1 + LINE2;
 		
-		s += "\n" + String.format("                                                                            SUBTOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", calculateSubTotal()));
+		s += "\n" + String.format("                                                                            SUBTOTAL | %13s | ",
+				InvoiceLine.customFormat("$#,###,###.00", calculateSubTotal()));
 		
 		s += "\n" + SPACE2 + LINE2;
 		
-		s += "\n" + String.format("                                                                                 GST | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST));
+		s += "\n" + String.format("                                                                                 GST | %13s | "
+				,InvoiceLine.customFormat("$#,###,###.00", GST));
 		
 		s += "\n" + SPACE2 + LINE2;
 		
-		s += "\n" + String.format("                                                                               TOTAL | %13s | ",InvoiceLine.customFormat("$#,###,###.00", GST + calculateSubTotal()));
+		s += "\n" + String.format("                                                                               TOTAL | %13s | "
+				,InvoiceLine.customFormat("$#,###,###.00", GST + calculateSubTotal()));
 		
 		s += "\n" + SPACE2 + LINE2 + "\n";
 		
